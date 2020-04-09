@@ -2,3 +2,11 @@ What is NLP?
 
 We have so much data.... Generating data like crazy.
 
+Natural Language Processing refers to computer understanding and manipulation of human language.
+
+Why use python?
+
+- python has a lot of pre-designed libraries for NLP
+Example: nltk, sklearn (for machine learning and nlp_
+
+
