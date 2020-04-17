@@ -1,0 +1,5 @@
+- regular expressions Is a sequence of characters that defines a specific search pattern and using which can match a pattern in a text.
+
+- I was born in the year 1998 - now to remove something in the sentence 
+
+re.sub(r"\d","", sentence) // iif there is a digit, you replace it with a empty string. 
