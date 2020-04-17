@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-#stop words
+#remove all the stop words
 
 import nltk
 #nltk.download('stopwords')
