@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 
-#bag of words
-
 import nltk
 import re
 
@@ -36,14 +34,26 @@ paragraph = """Thank you all so very much. Thank you to the Academy.
                granted. I do not take tonight for granted. Thank you so very much."""
                
                
-               # Tokenize sentences
+               
+print(paragraph)
+
 dataset = nltk.sent_tokenize(paragraph)
-print(dataset)
-print()
 for i in range(len(dataset)):
     dataset[i] = dataset[i].lower()
-    dataset[i] = re.sub(r'\W',' ',dataset[i])
-    dataset[i] = re.sub(r'\s+',' ',dataset[i])
+    dataset[i] = re.sub(r'\W', ' ',dataset[i])
+    dataset[i] = re.sub(r'\s+', ' ', dataset[i])
     
 print(dataset)
-               
+    
+
+# Creating word histogram
+word2count = {}
+for data in dataset:
+    words = nltk.word_tokenize(data)
+    for word in words:
+        if word not in word2count.keys():
+            word2count[word] = 1
+        else:
+            word2count[word] += 1
+            
+print(word2count)

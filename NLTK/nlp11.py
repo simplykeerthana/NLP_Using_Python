@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-#bag of words
-
 import nltk
 import re
+import heapq
+import numpy as np
 
 paragraph = """Thank you all so very much. Thank you to the Academy. 
                Thank you to all of you in this room. I have to congratulate 
@@ -36,14 +36,35 @@ paragraph = """Thank you all so very much. Thank you to the Academy.
                granted. I do not take tonight for granted. Thank you so very much."""
                
                
-               # Tokenize sentences
+# Tokenize sentences
 dataset = nltk.sent_tokenize(paragraph)
-print(dataset)
-print()
 for i in range(len(dataset)):
     dataset[i] = dataset[i].lower()
     dataset[i] = re.sub(r'\W',' ',dataset[i])
     dataset[i] = re.sub(r'\s+',' ',dataset[i])
+
+
+# Creating word histogram
+word2count = {}
+for data in dataset:
+    words = nltk.word_tokenize(data)
+    for word in words:
+        if word not in word2count.keys():
+            word2count[word] = 1
+        else:
+            word2count[word] += 1
+            
+# Selecting best 100 features
+freq_words = heapq.nlargest(100,word2count,key=word2count.get)
+
+
+# IDF Dictionary
+word_idfs = {}
+for word in freq_words:
+    doc_count = 0
+    for data in dataset:
+        if word in nltk.word_tokenize(data):
+            doc_count += 1
+    word_idfs[word] = np.log(len(dataset)/(1+doc_count))
     
-print(dataset)
-               
+print(word_idfs)
