@@ -32,3 +32,51 @@ list2d = [[1,2,3],[4,5,6]]
 arr2d = np.asarray(list2d)
 
 print(arr2d)
+
+
+listzeros = np.zeros((3,4), dtype='int32')
+
+print(listzeros)
+
+np.linspace(1,4,num=4)
+np.linspace(1,4,num=8)
+np.linspace(1,4,num=8,endpoint=False)
+
+print(np.random.random((3,4)))
+
+
+rarr = np.random.random((3,4))
+
+np.max(rarr, axis=0)
+np.max(rarr, axis=1)
+
+np.min(rarr, axis=0)
+np.min(rarr, axis=1)
+
+np.median(rarr, axis=0)
+np.median(rarr, axis=1)
+
+# Reshaping
+# np.reshape(a, newshape, order='C')
+new_rarr = np.reshape(rarr, (12,))
+new_rarr = np.reshape(rarr, (12,1))
+
+# Slicing
+rarr = np.random.random((4,5))
+
+rarr[:,:]
+rarr[1:3,:]
+
+rarr[:,1:]
+rarr[:,1:3]
+
+rarr[1:3,1:3]
+
+rarr[[0,3],:]
+rarr[:,[0,3]]
+
+
+rarr[:-1,:]
+rarr[-1:,:]
+
+
